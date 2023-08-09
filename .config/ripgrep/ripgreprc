@@ -1,0 +1,45 @@
+# ~/.ripgreprc
+# 
+# Configures default options for ripgrep line-oriented search tool.
+#
+# Environment variable `RIPGREP_CONFIG_PATH` must point to this file.
+# See https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md
+# -----------------------------------------------------------------------------
+
+# Don't let ripgrep vomit really long lines to my terminal, and show a preview.
+--max-columns=150
+--max-columns-preview
+
+# Because who cares about case!?
+--smart-case
+
+# Set the colors.
+--colors=line:none
+--colors=line:style:bold
+
+# Search hidden files / directories (e.g. dotfiles) by default
+--hidden
+
+# Follow symbolic links.
+--follow
+
+# Sort by file path.
+--sort=path
+
+# Don't respect ignore files (.gitignore, .ignore, etc.).
+--no-ignore
+
+# Limit search depth for directories.
+--max-depth=8
+
+# Add my 'web' type.
+--type-add
+web:*.{html,css,js}*
+
+# Using glob patterns to include/exclude files or folders
+--glob=!package-lock.json
+--glob=!*.{lock}
+--glob=!yarn.lock
+--glob=!.git/*
+--glob=!node_modules/*
+--glob=!Trash

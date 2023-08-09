@@ -1,0 +1,12 @@
+userconfig=${XDG_CONFIG_HOME}/npm/npmrc
+prefix=${XDG_DATA_HOME}/npm
+cache=${XDG_CACHE_HOME}/npm
+# tmp=${XDG_RUNTIME_DIR}/npm
+init-module=${XDG_CONFIG_HOME}/npm/config/npm-init.js
+init-author-email=mikedisbrow@gmail.com
+init-author-name=Mike Disbrow
+init-author-url=https://github.com/mikedisbrow
+init-license=MIT
+init-version=1.0.0
+sign-git-commit=true
+sign-git-tag=true
