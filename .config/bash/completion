@@ -1,0 +1,144 @@
+#!/usr/bin/env bash
+# bash/completion
+# ---
+
+# shellcheck disable=1091,1090
+
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # macOS Homebrew bash completions
+  if [[ -f "$BREW_PREFIX/etc/profile.d/bash_completion.sh" ]]; then
+    # Load entire Homebrew installed software's bash completion
+    # export BASH_COMPLETION_DEBUG=1
+    source "$BREW_PREFIX/etc/profile.d/bash_completion.sh"
+  else
+    for COMPLETION in "$BREW_PREFIX/etc/bash_completion.d/"*; do
+      [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
+    done
+  fi
+
+  # Add tab completion for `defaults read|write NSGlobalDomain`
+  # You could just use `-g` instead, but I like being explicit
+  complete -W "NSGlobalDomain" defaults
+
+  # Add `killall` tab completion for common apps
+  complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
+fi
+
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion;
+  elif [ -f /usr/local/etc/bash_completion ]; then
+    source /usr/local/etc/bash_completion;
+  elif [ -f /opt/local/etc/bash_completion ]; then
+    source /opt/local/etc/bash_completion
+  fi
+fi
+
+if [[ -d /etc/bash_completion.d/ ]]; then
+  for file in /etc/bash_completion.d/* ; do
+    # shellcheck source=/dev/null
+    source "$file"
+  done
+fi
+
+
+
+# Automatically add completion for all aliases to commands having completion functions
+# source: http://superuser.com/questions/436314/how-can-i-get-bash-to-perform-tab-completion-for-my-aliases
+alias_completion()
+{
+  local namespace="alias_completion"
+
+  # parse function based completion definitions, where capture group 2 => function and 3 => trigger
+  local compl_regex='complete( +[^ ]+)* -F ([^ ]+) ("[^"]+"|[^ ]+)'
+  # parse alias definitions, where capture group 1 => trigger, 2 => command, 3 => command arguments
+  local alias_regex="alias ([^=]+)='(\"[^\"]+\"|[^ ]+)(( +[^ ]+)*)'"
+
+  # create array of function completion triggers, keeping multi-word triggers together
+  eval "local completions=($(complete -p | sed -rne "/$compl_regex/s//'\3'/p"))"
+  (( ${#completions[@]} == 0 )) && return 0
+
+  # create temporary file for wrapper functions and completions
+  rm -f "/tmp/${namespace}-*.XXXXXXXXXX" # preliminary cleanup
+  local tmp_file="$(mktemp "/tmp/${namespace}-${RANDOM}.XXXXXXXXXX")" || return 1
+
+  # read in "<alias> '<aliased command>' '<command args>'" lines from defined aliases
+  local line; while read line; do
+    eval "local alias_tokens=($line)" 2>/dev/null || continue # some alias arg patterns cause an eval parse error
+    local alias_name="${alias_tokens[0]}" alias_cmd="${alias_tokens[1]}" alias_args="${alias_tokens[2]# }"
+
+    # skip aliases to pipes, boolan control structures and other command lists
+    # (leveraging that eval errs out if $alias_args contains unquoted shell metacharacters)
+    eval "local alias_arg_words=($alias_args)" 2>/dev/null || continue
+
+    # skip alias if there is no completion function triggered by the aliased command
+    [[ " ${completions[*]} " =~ " $alias_cmd " ]] || continue
+    local new_completion="$(complete -p "$alias_cmd")"
+
+    # create a wrapper inserting the alias arguments if any
+    if [[ -n $alias_args ]]; then
+     local compl_func="${new_completion/#* -F /}"; compl_func="${compl_func%% *}"
+     # avoid recursive call loops by ignoring our own functions
+     if [[ "${compl_func#_$namespace::}" == $compl_func ]]; then
+       local compl_wrapper="_${namespace}::${alias_name}"
+         echo "function $compl_wrapper {
+           (( COMP_CWORD += ${#alias_arg_words[@]} ))
+           COMP_WORDS=($alias_cmd $alias_args \${COMP_WORDS[@]:1})
+           $compl_func
+         }" >> "$tmp_file"
+         new_completion="${new_completion/ -F $compl_func / -F $compl_wrapper }"
+     fi
+    fi
+
+    # replace completion trigger by alias
+    new_completion="${new_completion% *} $alias_name"
+    echo "$new_completion" >> "$tmp_file"
+  done < <(alias -p | sed -rne "s/$alias_regex/\1 '\2' '\3'/p")
+  source "$tmp_file" && rm -f "$tmp_file"
+}
+if [ -n "$BASH_VERSION" ]; then
+  alias_completion
+fi
+unset -f alias_completion
+
+
+
+
+# SSH auto-completion based on entries in known_hosts.
+if [[ -e ~/.ssh/known_hosts ]]; then
+  # complete -o default -W "$(cat ~/.ssh/known_hosts | sed 's/[, ].*//' | sort | uniq | grep -v '[0-9]')" ssh scp sftp
+  complete -o default -W \
+      "echo $(cat ~/.ssh/config | grep 'Host ' | sort | uniq | cut -d' ' -f2) \
+      $(cat ~/.ssh/known_hosts  | cut -d ' ' -f1 | grep ',' | cut -d ',' -f1)" \
+      ssh scp sftp
+fi
+
+
+
+# Better completion for killall.
+_killall()
+{
+    local cur prev
+    COMPREPLY=()
+    cur=${COMP_WORDS[COMP_CWORD]}
+
+    #  Get a list of processes
+    #+ (the first sed evaluation
+    #+ takes care of swapped out processes, the second
+    #+ takes care of getting the basename of the process).
+    COMPREPLY=( $( ps -u $USER -o comm  | \
+        sed -e '1,1d' -e 's#[]\[]##g' -e 's#^.*/##'| \
+        awk '{if ($0 ~ /^'$cur'/) print $0}' ))
+
+    return 0
+}
+complete -F _killall killall
+
+# When completing cd and rmdir, only dirs should be possible option (default is
+# all files on Mac).
+complete -d cd rmdir

@@ -1,8 +1,23 @@
 #!/bin/bash
 
+# ~/.bash_profile
+# -----------------------------------------------------------------------------
+# interactive login
+# /etc/profile
+# ~/.bash_profile
+# ~/.bash_login
+# ~/.profile
+#
+# https://wiki.archlinux.org/title/bash
+# https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html
+
+# shellcheck shell=bash
+# shellcheck source=/dev/null
+
 # set -x
-# Load .bashrc, which loads: ~/.{bash_prompt,aliases,functions,path,dockerfunc,extra,exports}
+
+# make bash load .bashrc 
+# [[ -f ~/.bashrc ]] && . ~/.bashrc
 if [[ -r "${HOME}/.bashrc" ]]; then
-    # shellcheck source=/dev/null
     source "${HOME}/.bashrc"
 fi
