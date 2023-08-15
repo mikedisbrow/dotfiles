@@ -45,18 +45,19 @@ export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Movies"
 
 # Set ZDOTDIR if you want to re-home Zsh.
-export ZDOTDIR=${ZDOTDIR:-$XDG_CONFIG_HOME/zsh}
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 # export ZHOMEDIR=$HOME/.config/zsh
 # export ZRCDIR=$ZHOMEDIR/rc
 # export ZDATADIR=$XDG_DATA_HOME/zsh
 # export ZCACHEDIR=$XDG_CACHE_HOME/zsh
 export ZFUNCDIR=${ZFUNCDIR:-$ZDOTDIR/functions}
 export ZPLUGINDIR=${ZPLUGINDIR:-$ZDOTDIR/plugins}
+export GNUPGHOME="${XDG_CONFIG_HOME:-$HOME/.config}/gnupg"
 
 # Package managers etc.
 export FRUM_DIR="$XDG_DATA_HOME/frum"
 export FNM_DIR="$XDG_DATA_HOME/fnm"
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/npmrc"
 export UMCONFIG_HOME="$XDG_CONFIG_HOME/um/umconfig"
 # export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 # export VOLTA_HOME=${VOLTA_HOME:-$XDG_CONFIG_HOME/volta}
@@ -185,9 +186,9 @@ fi
 
 ## Eliminates duplicates in *paths
 typeset -gU path cdpath fpath manpath
-path=("$path[@]")
+# path=("$path[@]")
 ## Adds `~/.local/bin` and all subdirs to $PATH
-export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+# export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 
 # https://github.com/sorin-ionescu/prezto/blob/master/runcoms/zshenv
 # Ensure that a non-login, non-interactive shell has a defined environment.

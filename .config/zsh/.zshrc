@@ -13,10 +13,6 @@
 
 # Zsh options.
 
-# if [[ "$ZPROF" = true ]]; then
-#         zmodload zsh/zprof
-# fi
-
 # zmodload zsh/zprof
 
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/zsh-history"
@@ -49,7 +45,7 @@ export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30
 export ZLS_COLORS=$LS_COLORS
 export CLICOLOR=1
 export COLORTERM="truecolor"
-
+export GPG_TTY=$(tty)
 
 # Pagers:
 # This affects every invocation of `less`
@@ -357,6 +353,7 @@ zstyle ':completion:*' squeeze-slashes true
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
 compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompdump-${ZSH_VERSION}"
+eval "$(op completion zsh)"; compdef _op op
 
 
 # Initialize editing command line
@@ -415,15 +412,5 @@ zle_highlight=('paste:none')
 # zprof
 # . "$HOME/.config/zsh/profiler.stop"
 
-# if [[ "$ZPROF" = true ]]; then
-#         exit_hook() {
-#                 print "zprof for process $$"
-#                 zprof
+# zprof
 
-#                 while read input; do
-#                 done
-
-#                 exit 0
-#         }
-#         add-zsh-hook zshexit exit_hook
-# fi

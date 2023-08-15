@@ -113,7 +113,7 @@ alias mkdir="mkdir -pv"
 # create a dir with date from today
 alias mkdd='mkdir $(date +%Y%m%d)'
 
-alias perm='stat --printf "%a %n \n "' # Show permission of target in number
+# alias perm='stat --printf "%a %n \n "' # Show permission of target in number
 alias 000='chmod 000'                  # ---------- (usr grp oth)
 alias 640='chmod 640'                  # -rw-r-----
 alias 644='chmod 644'                  # -rw-r--r--
@@ -305,8 +305,6 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
 alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden files in current dir
 
-# decimal to hexadecimal value
-alias dec2hex='printf "%x\n" $1'
 
 # ZSH Shit ####################################################################
 # Use zmv, which is amazing

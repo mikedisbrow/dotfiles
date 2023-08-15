@@ -76,6 +76,7 @@ export LANG="en_US.UTF-8"
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=vim
 export VISUAL='subl -w'
+export GPG_TTY=$(tty)
 
 # export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
 
@@ -148,6 +149,8 @@ fi
 if [[ -f "$XDG_CONFIG_HOME/bash/aliases" ]]; then
     source "$XDG_CONFIG_HOME/bash/aliases"
 fi
+
+source <(op completion bash)
 
 eval "$(fnm env)"
 eval "$(frum init)"
