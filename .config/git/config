@@ -4,17 +4,20 @@
 [user]
   name = Mike Disbrow
   email = mikedisbrow@gmail.com
-	signingkey = /Users/miked/.ssh/id_ed25519.pub
+	# signingkey = /Users/miked/.ssh/id_ed25519.pub
 
 [gpg]
   format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
 [core]
   # https://www.git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config#ch_core_editor
   # editor = subl --new-window --wait
   editor = vim --nofork
-  excludesfile = $XDG_CONFIG_HOME/git/ignore
-  attributesfile = $XDG_CONFIG_HOME/git/attributes
+  excludesfile = ~/.config/git/ignore
+  attributesfile = ~/.config/git/attributes
   whitespace = space-before-tab,tab-in-indent,trailing-space
   pager = less -FRX
   # https://github.com/dandavison/delta
@@ -176,5 +179,5 @@
 #     order to allow any of the above configs to be overwritten
 #     by the local ones
 [include]
-  path = ~/.config/gitconfig.local
+  path = ~/.config/git/gitconfig.local
   # path = ~/projects/tokyonight.nvim/extras/delta/tokyonight_moon.gitconfig
