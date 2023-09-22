@@ -73,13 +73,17 @@ set -gx FZF_DEFAULT_OPTS "--height=40% --layout=reverse --info=inline --border -
 # FZF custom tokyo-night theme
 # set -gx FZF_DEFAULT_OPTS "--color=fg:#a9b1d6,bg:#1a1b26,preview-fg:#c8d3f5,preview-bg:#222436,hl:#6d91de,fg+:#c0caf5,bg+:#161720,gutter:#161720,hl+:#e0af68,info:#646e9c,border:#565f89,prompt:#0db9d7,pointer:#dbc08a,marker:#9d7cd8,spinner:#9d599d,header:#61bdf2'"
 
-
+[ -r ~/.aliases.fish ] && source ~/.aliases.fish
+[ -r ~/.abbr.fish ] && source ~/.abbr.fish
 
 # add function subdirs to fish_function_path
 set fish_function_path (path resolve $__fish_config_dir/functions/*/) $fish_function_path
 
 # add completion subdirs to fish_completion_path
 set fish_complete_path (path resolve $__fish_config_dir/completions/*/) $fish_complete_path
+
+## Hooks
+test -d $XDG_DATA_HOME/fish/generated_completions; or fish_update_completions
 
 # Silently load SSH keys from the keychain if needed
 ssh-add -l >/dev/null || ssh-add -A 2>/dev/null
@@ -89,8 +93,7 @@ if test -f /opt/homebrew/opt/asdf/libexec/asdf.fish
   source /opt/homebrew/opt/asdf/libexec/asdf.fish
 end
 
-[ -r ~/.aliases.fish ] && source ~/.aliases.fish
-[ -r ~/.abbr.fish ] && source ~/.abbr.fish
+
 
 op completion fish | source
 zoxide init fish | source

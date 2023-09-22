@@ -1,6 +1,7 @@
 -- plugins and shit
 -- https://www.lazyvim.org/configuration/recipes
 return {
+
   {
     -- https://github.com/folke/tokyonight.nvim
     "folke/tokyonight.nvim",
