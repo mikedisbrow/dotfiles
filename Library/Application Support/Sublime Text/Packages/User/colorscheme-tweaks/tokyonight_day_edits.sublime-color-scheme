@@ -1,0 +1,49 @@
+// Documentation at https://www.sublimetext.com/docs/color_schemes.html
+{
+  "variables": {},
+  "globals": {
+    "background": "#d5d6db",
+    "foreground": "#343b59",
+    "line_highlight": "#dcdee3",
+    "accent": "#9D599D",
+    "inactive_selection": "#9D599D20",
+  },
+  "rules": [
+    {
+      "name": "Block Punctuation",
+      "scope": "meta.block, meta.brace",
+      "foreground": "#007197"
+    },
+    {
+      "name": "Block Punctuation",
+      "scope": "punctuation.definition.block, punctuation.definition.use, punctuation.definition.group.shell, punctuation.definition.class, punctuation.definition.begin.bracket, punctuation.definition.end.bracket, punctuation.definition.switch-expression.begin.bracket, punctuation.definition.switch-expression.end.bracket, punctuation.definition.section.switch-block.begin.bracket, punctuation.definition.section.switch-block.end.bracket, punctuation.definition.group.shell, punctuation.definition.parameters, punctuation.definition.arguments, punctuation.definition.dictionary, punctuation.definition.array, punctuation.section",
+      "foreground": "#6d91de"
+    },
+    {
+      "name": "Colors",
+      "scope": "constant.other.color, constant.other.color.rgb-value.hex punctuation.definition.constant",
+      "foreground": "#565a6e" //  "#565a6e"
+    },
+    {
+      "name": "HTML text",
+      "scope": "text.html",
+      "foreground": "#565a6e" //  "#565a6e"
+    },
+    {
+      "name": "Markdown - Heading 5",
+      "scope": "heading.5.markdown entity.name, heading.5.markdown punctuation.definition.heading.markdown",
+      "foreground": "#565a6e", // "#565a6e",
+      "font_style": "bold"
+    },
+    {
+      "name": "Tag",
+      "scope": "entity.name.tag, entity.name.tag support.class.component, meta.tag",
+      "foreground": "#d50a45" //  "#8c4351"
+    },
+    {
+      "name": "CSS ID",
+      "scope": "entity.other.attribute-name.id",
+      "foreground": "#fb6363" //  "#942f2f"
+    },
+  ]
+}

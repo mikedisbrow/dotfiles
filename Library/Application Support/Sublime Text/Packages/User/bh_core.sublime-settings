@@ -1,0 +1,40 @@
+// Define region highlight styles
+{
+    "user_bracket_styles": {
+        "default": {
+            "color": "brackethighlighter.default"
+        },
+
+        "unmatched": {
+            "color": "brackethighlighter.unmatched"
+        },
+
+        "curly": {
+            "color": "brackethighlighter.curly"
+        },
+        "round": {
+            "color": "brackethighlighter.round"
+        },
+        "square": {
+            "color": "brackethighlighter.square"
+        },
+        "angle": {
+            "color": "brackethighlighter.angle"
+        },
+        "tag": {
+            "color": "brackethighlighter.tag"
+        },
+        "c_define": {
+            "color": "brackethighlighter.c_define"
+        },
+        "single_quote": {
+            "color": "brackethighlighter.quote"
+        },
+        "double_quote": {
+            "color": "brackethighlighter.quote"
+        },
+        "regex": {
+            "color": "brackethighlighter.quote"
+        }
+    }
+}

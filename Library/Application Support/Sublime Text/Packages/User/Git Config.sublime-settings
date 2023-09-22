@@ -1,0 +1,9 @@
+{
+	"extensions":
+	[
+		".gitconfig",
+		"config",
+		"gitignore",
+		"attributes"
+	],
+}

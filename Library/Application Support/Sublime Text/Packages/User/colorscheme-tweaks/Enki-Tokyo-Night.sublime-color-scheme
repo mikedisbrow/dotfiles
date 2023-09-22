@@ -1,0 +1,42 @@
+// Documentation at https://www.sublimetext.com/docs/color_schemes.html
+{
+    "variables":
+    {
+        "background": "#1a1b26",
+        "foreground": "#a9b1d6",
+        "comment": "#565f89",
+    },
+    "globals":
+    {
+        "background": "#1a1b26",
+        "foreground": "#a9b1d6",
+    },
+    "rules":
+    [
+        {
+            "name": "Comments",
+            "scope": "comment",
+            "foreground": "#565f89"
+        },
+        {
+            "name": "Class Name",
+            "scope": "entity.name, entity.name.class",
+            "foreground": "#c0caf5"
+        },
+        {
+            "name": "CSS Punctuation",
+            "scope": "meta.property-list punctuation.separator.key-value, meta.property-list",
+            "foreground": "#9abdf5"
+        },
+        {
+            "name": "String, Symbols",
+            "scope": "string, constant.other.symbol, constant.other.key, markup.heading, meta.attribute-selector",
+            "foreground": "#9ece6a"
+        },
+        {
+            "name": "Markup heading",
+            "scope": "markup.heading",
+            "foreground": "#A9B1D6"
+        }
+    ]
+}
