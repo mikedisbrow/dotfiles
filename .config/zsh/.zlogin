@@ -21,6 +21,7 @@ if (! [[ -d "$HOME/.local/share/zsh" ]]) {
 # Compile zcompdump, if modified, to increase startup speed.
 {
   typeset -g zcompdump="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompdump-${ZSH_VERSION}"
+  
   if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
     zcompile "$zcompdump"
   fi

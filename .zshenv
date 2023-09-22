@@ -21,7 +21,7 @@
 # [[ -v ZSH_TIME_STARTUP ]] && t0=$EPOCHREALTIME
 # . "$HOME/.config/zsh/profiler.start"
 
-## XDG  Base Directory
+## XDG Base Directory
 # https://specifications.freedesktop.org/basedir-spec/latest/
 # https://wiki.archlinux.org/index.php/XDG_Base_Directory
 ## (( ${+*} )) = if variable is set don't set it anymore. or use [[ -z ${*} ]]
@@ -35,43 +35,50 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 export XDG_RUNTIME_HOME=${XDG_RUNTIME_HOME:-$HOME/.tmp}
 
-export XDG_DESKTOP_DIR="$HOME/Desktop"
-export XDG_DOCUMENTS_DIR="$HOME/Documents"
-export XDG_DOWNLOAD_DIR="$HOME/Downloads"
-export XDG_MUSIC_DIR="$HOME/Music"
-export XDG_PICTURES_DIR="$HOME/Pictures"
-# export XDG_PUBLICSHARE_DIR="$HOME/Public"
-# export XDG_TEMPLATES_DIR="$HOME/GitHub/Templates"
-export XDG_VIDEOS_DIR="$HOME/Movies"
+export XDG_DESKTOP_DIR="${HOME}/Desktop"
+export XDG_DOCUMENTS_DIR="${HOME}/Documents"
+export XDG_DOWNLOAD_DIR="${HOME}/Downloads"
+export XDG_MUSIC_DIR="${HOME}/Music"
+export XDG_PICTURES_DIR="${HOME}/Pictures"
+# export XDG_PUBLICSHARE_DIR="${HOME}/Public"
+# export XDG_TEMPLATES_DIR="${HOME}/GitHub/Templates"
+export XDG_VIDEOS_DIR="${HOME}/Movies"
 
 # Set ZDOTDIR if you want to re-home Zsh.
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-# export ZHOMEDIR=$HOME/.config/zsh
-# export ZRCDIR=$ZHOMEDIR/rc
-# export ZDATADIR=$XDG_DATA_HOME/zsh
-# export ZCACHEDIR=$XDG_CACHE_HOME/zsh
+export ZDATADIR="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
+export ZCACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 export ZFUNCDIR=${ZFUNCDIR:-$ZDOTDIR/functions}
 export ZPLUGINDIR=${ZPLUGINDIR:-$ZDOTDIR/plugins}
+# export GVIMINIT='let $MYGVIMRC="$XDG_CONFIG_HOME/vim/gvimrc" | source $MYGVIMRC'
+# export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+# export GVIMINIT='let $MYGVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/gvimrc" : "$XDG_CONFIG_HOME/nvim/init.gvim" | so $MYGVIMRC'
+# export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.vim" | so $MYVIMRC'
 export GNUPGHOME="${XDG_CONFIG_HOME:-$HOME/.config}/gnupg"
 
 # Package managers etc.
 export FRUM_DIR="$XDG_DATA_HOME/frum"
 export FNM_DIR="$XDG_DATA_HOME/fnm"
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/npmrc"
-export UMCONFIG_HOME="$XDG_CONFIG_HOME/um/umconfig"
-# export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
-# export VOLTA_HOME=${VOLTA_HOME:-$XDG_CONFIG_HOME/volta}
-# export NVM_DIR="$XDG_CONFIG_HOME"/nvm
-# export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-# export CARGO_HOME="$XDG_DATA_HOME/cargo"
-# export GOPATH="$XDG_DATA_HOME/go"
-# export GEM_HOME="$XDG_DATA_HOME/gem"
-# export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
+export NPM_CONFIG_CACHE="${XDG_CACHE_HOME}/npm"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export VOLTA_HOME=${VOLTA_HOME:-$XDG_CONFIG_HOME/volta}
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GOPATH="$XDG_DATA_HOME/go"
+export GEMRC="${XDG_CONFIG_HOME}/gem/gemrc"
+export GEM_HOME="$XDG_DATA_HOME/gem"
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 # export BUNDLE_USER_HOME="$XDG_DATA_HOME/bundle"
 # export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle/cache"
 # export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
 # export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle/plugin"
 # export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
+# export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
+# export MACHINE_STORAGE_PATH="${XDG_DATA_HOME}/docker/machine"
+# python
+# export PYLINTHOME=${XDG_DATA_HOME:-$HOME/.local/share}/pylint
 # export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 # export PYTHONHISTORY="${XDG_CACHE_HOME:-$HOME/.cache}/python/history" # This will work once https://github.com/python/cpython/pull/13208 gets merged...
 
@@ -81,6 +88,7 @@ export BAT_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/bat"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/readline/inputrc"
 export TEALDEER_CONFIG_DIR="/Users/miked/.config/tealdeer"
+export UMCONFIG_HOME="$XDG_CONFIG_HOME/um/umconfig"
 # export CHEAT_CONFIG_PATH="$XDG_CONFIG_HOME/cheat/conf.yml"
 # export CHTSH=${XDG_CONFIG_HOME:-$HOME/cht.sh}
 # export CHTSH_CONF="$XDG_CONFIG_HOME/cht.sh/cht.sh.conf"
@@ -88,11 +96,11 @@ export _Z_DATA="$XDG_DATA_HOME/z/z-history"
 export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export STARSHIP_CACHE="$XDG_CACHE_HOME/starship/cache"
-
-export SYNC_DIR="${HOME}/Dropbox"
-export ICLOUD_DIR="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
+export LESSHISTFILE="${XDG_DATA_HOME}/lesshst"
+export SYNC_DIR="${HOME}/Library/CloudStorage/Dropbox"
+export ICLOUD_DIR="${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
 export ICLOUD_DOCUMENTS_DIR="${ICLOUD_DIR}/Documents"
-export DOCUMENTS_DIR="${ICLOUD_DOCUMENTS_DIR}"
+export DOCUMENTS_DIR="${HOME}/Documents"
 export OBSIDIAN_VAULT_DIR="${ICLOUD_DIR}/Documents/_notes/vault"
 
 # shellcheck opts to avoid having .shellcheckrc in ~ (https://github.com/koalaman/shellcheck/wiki)
@@ -184,11 +192,20 @@ fi
 
 # autoload -Uz ${ZDOTDIR}/functions/**/*(N:t)
 
-## Eliminates duplicates in *paths
+# Force path arrays to have unique values only
 typeset -gU path cdpath fpath manpath
-# path=("$path[@]")
-## Adds `~/.local/bin` and all subdirs to $PATH
-# export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+
+## PATHs
+# prevent duplicate entries
+# https://github.com/mcornella/dotfiles/blob/e62b0d4/zshenv#L63-L67
+# https://github.com/zsh-users/zsh/blob/a9061cc/StartupFiles/zshrc#L56-L57
+# https://github.com/zsh-users/zsh/commit/db3f2d2
+# test -n "${ZSH-}" &&
+#   export -U \
+#     PATH path \
+#     CDPATH cdpath \
+#     FPATH fpath \
+#     MANPATH manpath
 
 # https://github.com/sorin-ionescu/prezto/blob/master/runcoms/zshenv
 # Ensure that a non-login, non-interactive shell has a defined environment.

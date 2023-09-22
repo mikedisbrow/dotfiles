@@ -41,6 +41,7 @@ alias ldot='ls -ld .* --group-directories-first'
 # shellcheck disable=SC2139
 alias lsd="ls -lhF ${colorflag} | grep '^d'"
 
+
 alias ~="cd ~"
 alias -- -="cd -"
 alias ..="cd .."
@@ -55,8 +56,8 @@ alias h='history'
 alias hig="history | grep"
 
 # Always show disk usage in a human readable format
-alias df="df --human-readable"
-alias du="du --human-readable"
+alias df="df --human-readable --print-type"
+alias du="du --human-readable --total"
 alias free="free -human "
 alias dud='du -d 1 -h' # List sizes of files within directory
 alias duf='du -sh *' # List total size of current directory
@@ -71,6 +72,8 @@ alias ffile='find . -type f -name'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+
+alias ip='ip --color=auto'
 
 # Fuzzy find stuff
 alias hf="history | fzf"
@@ -137,7 +140,7 @@ alias mount="mount |column -t"
 
 # Resume wget by default
 ## this one saved by butt so many times ##
-alias wget="wget -c"
+alias wget="wget -c --hsts-file=${XDG_CACHE_HOME}/wget-hsts"
 
 # Download file and save it with filename of remote file
 alias get="curl -O -L"
@@ -218,7 +221,7 @@ alias ports="netstat -tulanp"
 alias mbpserial="ioreg -l | grep IOPlatformSerialNumber"
 
 # Pipe my public key to my clipboard.
-alias pubkey="cat ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
+alias pubkey="cat ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard'"
 
 if [[ $os = Darwin ]]; then
     alias chrome='open -a Google\ Chrome\ Dev'
@@ -288,6 +291,12 @@ alias c="tr -d '\n' | pbcopy"
 
 # My Misc Shit ################################################################
 
+alias cpu='procs --sortd cpu'
+alias mem='procs --sortd mem'
+
+# copy current path
+alias cwd="pwd | pbcopy"
+
 # add Sublime Text terminal command
 # alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
@@ -312,3 +321,11 @@ alias zmv="noglob zmv -W"
 alias zbench='for i in {1..10}; do /usr/bin/time zsh -lic exit; done'
 alias zdot='cd ${ZDOTDIR:-~}'
 
+
+
+## lf - Terminal File Manager (https://github.com/gokcehan/lf)
+# Enables lfcd alias that runs lf, but also changes directory upon exit.
+LFCD="$HOME/.config/lf/lfcd.sh"
+if [ -f "$LFCD" ]; then
+  source $LFCD
+fi
