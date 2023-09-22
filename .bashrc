@@ -49,6 +49,8 @@ export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle/cache"
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle/plugin"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+# export VIMINIT="source ~/.config/vim/vimrc"
+# export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # Homebrew
 if [[ -e /opt/homebrew/bin/brew ]]; then
@@ -151,6 +153,8 @@ if [[ -f "$XDG_CONFIG_HOME/bash/aliases" ]]; then
 fi
 
 source <(op completion bash)
+
+. "/Users/miked/.local/share/cargo/env"
 
 eval "$(fnm env)"
 eval "$(frum init)"
