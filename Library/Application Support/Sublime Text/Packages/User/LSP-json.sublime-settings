@@ -1,0 +1,11 @@
+// Settings in here override those in "LSP-json/LSP-json.sublime-settings"
+
+{
+    "disabled_capabilities": {
+        // the trigger characters are too blunt, we'll specify auto_complete_selector manually
+        "completionProvider": {
+            "triggerCharacters": true
+        },
+        "colorProvider": true
+    }
+}

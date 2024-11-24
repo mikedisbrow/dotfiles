@@ -1,0 +1,16 @@
+// SublimeLinter Settings - User
+{
+  // "debug": true,
+// "linters": {
+//   "eslint": {
+//     "executable": "~/.local/config/bin/eslint"
+//   },
+// },
+"paths": {
+        "linux": [],
+        "osx": [
+          "~/.local/share/npm/bin"
+        ],
+        "windows": []
+    },
+}

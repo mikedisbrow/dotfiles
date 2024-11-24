@@ -1,0 +1,190 @@
+# https://git-scm.com/docs/git-config
+# https://www.git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
+
+[user]
+  name = Mike Disbrow
+  email = mikedisbrow@gmail.com
+	# signingkey = /Users/miked/.ssh/id_ed25519.pub
+  # signingkey = D2513963C2261687
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[core]
+  # https://www.git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config#ch_core_editor
+  # editor = subl --new-window --wait
+  editor = vim --nofork
+  excludesfile = ~/.config/git/ignore
+  attributesfile = ~/.config/git/attributes
+  whitespace = space-before-tab,tab-in-indent,trailing-space
+  pager = less -FRX
+  # https://github.com/dandavison/delta
+  # pager = delta
+  hooksPath = ~/.config/git/hooks
+
+[alias]
+  a = add
+  aa = add --all
+  b = branch
+  c = commit
+  cam = commit -am
+  ci = commit --short
+  can = commit --amend --no-edit
+  co = checkout
+  com = checkout master
+  st = status -sb
+
+  glog = log --oneline --decorate --graph --all
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
+  # log key - our favorite way to show our key performance indicators, i.e. our most useful summary.
+  lk = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset'
+
+  df = diff --color --color-words --abbrev
+  d = -c core.pager=delta diff
+  dd = !git -c core.pager='delta --side-by-side' diff
+  dlc = !git d HEAD^..HEAD
+  dn = diff --name-only
+  dm = diff master...
+  ds = !git -c core.pager=delta diff --staged
+  dds = !git -c core.pager='delta --side-by-side' diff --staged
+  dt = difftool
+  dw = diff --word-diff=color
+
+  # Reset aliases
+  reset-hard = !git reset --hard
+  reset-hard-clean = !git reset --hard && git clean -fd
+  reset-commit = !git reset --soft HEAD^
+  reset-add = !git reset HEAD
+  reset-stage = !git reset HEAD
+
+  fuckit = reset --hard
+
+[apply]
+  whitespace = fix
+
+[color]
+  ui = always
+
+[commit]
+	gpgsign = true
+  template = ~/.config/git/templates/gitmessage
+
+[credential]
+  helper = osxkeychain
+
+# correct typos
+[help]
+  autocorrect = 1
+  format = html
+
+[color "branch"]
+  current = green bold
+  local = green
+  remote = yellow
+
+[color "diff"]
+  meta = yellow bold
+  commit = green bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  newMoved = cyan dim
+  oldMoved = blue dim
+  newMovedAlternative = cyan italic
+  oldMovedAlternative = blue italic
+
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = brightblack
+
+[log]
+  # https://github.com/git/git/commit/acdd37769de8b0fe37a74bfc0475b63bdc55e9dc
+  date = human
+
+[merge]
+  log = true
+  guitool = smerge
+
+[init]
+  defaultBranch = main
+  templatedir = ~/.config/git/templates/
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+  side-by-side = false
+  line-numbers = true
+  # syntax-theme = tokyonight_moon
+
+[pager]
+  diff = delta
+  reflog = delta
+#  show = delta
+
+[pull]
+	ff = true
+  # rebase = true
+
+# push easily. http://stackoverflow.com/a/23918418/89484
+[push]
+  default = current
+  followTags = true
+  autoSetupRemote = true
+
+[status]
+  short = true
+  showStash = true
+  showUntrackedFiles = all
+
+[pretty]
+  log = "%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]"
+  graph = "%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"
+  # custom = "%C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)"
+  #                     │        │            │            │             └─ author name
+  #                     │        │            │            └─ message
+  #                     │        │            └─ date (relative)
+  #                     │        └─ decorations (branch, heads or tags)
+  #                     └─ hash (abbreviated)
+
+[url "git@github.com:"]
+  insteadOf = "gh:"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+  insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+  insteadOf = "gst:"
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+  insteadOf = "gist:"
+
+# Any GitHub repo with my username should be checked out r/w by default
+# http://rentzsch.tumblr.com/post/564806957/public-but-hackable-git-submodules
+[url "git@github.com:mikedisbrow/"]
+  insteadOf = "git://github.com/mikedisbrow/"
+
+# Load local configs.
+# https://git-scm.com/docs/git-config#_includes
+#
+# [!] The following needs to remain at the end of this file in
+#     order to allow any of the above configs to be overwritten
+#     by the local ones
+[include]
+  path = ~/.config/git/gitconfig.local
+  # path = ~/projects/tokyonight.nvim/extras/delta/tokyonight_moon.gitconfig
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

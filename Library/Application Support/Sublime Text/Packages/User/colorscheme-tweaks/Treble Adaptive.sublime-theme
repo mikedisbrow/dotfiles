@@ -1,0 +1,506 @@
+// Documentation at https://www.sublimetext.com/docs/themes.html
+{
+  "variables": {
+    "dim_accent": "color(var(--accent) blend(var(--background) 50%))",
+    "background_accent": "color(var(--background) l(+ 15%))",
+  },
+  "rules": [
+    {
+      "class": "tree_row",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "attributes": [
+        "selected"
+      ],
+      "layer0.tint": "var(background_accent)", // "var(--accent)"
+    },
+    {
+      "class": "tree_row",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "attributes": [
+        "selected"
+      ],
+      "parents": [
+        {
+          "class": "window",
+          "attributes": [
+            "file_light"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)", // "var(--accent)"
+    },
+    {
+      "class": "tab_control",
+      "settings": {
+        "tab_style": [
+          "mi",
+          "fa"
+        ],
+        "accent_color": "color-scheme"
+      },
+      "attributes": [
+        "selected"
+      ],
+      "layer1.tint": "var(--accent)",
+    },
+    {
+      "class": "tab_control",
+      "settings": {
+        "highlight_modified_tabs": true,
+        "tab_style": [
+          "mi",
+          "fa"
+        ],
+        "accent_color": "color-scheme"
+      },
+      "attributes": [
+        "dirty",
+        "selected"
+      ],
+      "layer2.tint": "var(--accent)",
+    },
+    {
+      "class": "tab_control",
+      "settings": {
+        "highlight_modified_tabs": true
+      },
+      "attributes": [
+        "dirty"
+      ],
+      "layer2.tint": "var(--accent)" // "#5D6C79"
+    },
+    {
+      "class": "tab_label",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "tab_control",
+          "attributes": [
+            "selected"
+          ]
+        }
+      ],
+      "fg": "var(--accent)",
+    },
+    {
+      "class": "tab_close_button",
+      "settings": {
+        "show_tab_close_buttons": true,
+        "tab_style": [
+          "mi",
+          "fa"
+        ],
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "tab_control",
+          "attributes": [
+            "selected"
+          ]
+        }
+      ],
+      "layer1.tint": "var(--accent)",
+    },
+    {
+      "class": "tab_close_button",
+      "settings": {
+        "show_tab_close_buttons": true,
+        "tab_style": [
+          "mi",
+          "fa"
+        ],
+        "accent_color": "color-scheme"
+      },
+      "attributes": [
+        "hover"
+      ],
+      "parents": [
+        {
+          "class": "tab_control",
+          "attributes": [
+            "selected"
+          ]
+        }
+      ],
+      "layer0.tint": "color(var(--accent) a(0.3)",
+      "layer1.tint": "var(--accent)"
+    },
+    {
+      "class": "tab_close_button",
+      "settings": {
+        "show_tab_close_buttons": true,
+        "tab_style": [
+          "mi",
+          "fa"
+        ],
+        "accent_color": "color-scheme"
+      },
+      "attributes": [
+        "!hover"
+      ],
+      "parents": [
+        {
+          "class": "tab_control",
+          "attributes": [
+            "dirty",
+            "selected"
+          ]
+        }
+      ],
+      "layer1.tint": "var(--accent)"
+    },
+    // CMD SHIFT P
+    {
+      "class": "mini_quick_panel_row",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "attributes": [
+        "selected"
+      ],
+      "layer0.tint": "var(background_accent)", // "var(--accent)"
+    },
+    {
+      "class": "mini_quick_panel_row",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "attributes": [
+        "selected"
+      ],
+      "parents": [
+        {
+          "class": "window",
+          "attributes": [
+            "file_light"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)", // "var(--accent)"
+    },
+    // CMD P
+    {
+      "class": "quick_panel_row",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "attributes": [
+        "selected"
+      ],
+      "layer0.tint": "var(--accent)"
+    },
+
+    {
+      "class": "quick_panel_label",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "match_fg": "var(--accent)"
+    },
+
+    // Auto Complete
+    {
+      "class": "table_row",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "attributes": [
+        "selected"
+      ],
+      "layer0.tint": "var(background_accent)",
+      "layer0.opacity": {
+        "target": 1,
+        "speed": 20,
+        "interpolation": "smoothstep"
+      }
+    },
+    {
+      "class": "table_row",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "attributes": [
+        "selected"
+      ],
+      "parents": [
+        {
+          "class": "auto_complete",
+          "attributes": [
+            "file_light"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)",
+      "layer0.opacity": {
+        "target": 1,
+        "speed": 20,
+        "interpolation": "smoothstep"
+      }
+    },
+    {
+      "class": "progress_gauge_control",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "layer0.tint": "var(--accent)"
+    },
+    {
+      "class": "text_line_control",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "overlay_control"
+        }
+      ],
+      "layer1.tint": "var(--accent)"
+    },
+    {
+      "class": "text_line_control",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "switch_project_window"
+        }
+      ],
+      "layer1.tint": "var(--accent)"
+    },
+    {
+      "class": "icon_button_control",
+      "settings": {
+        "button_background_transparent": false,
+        "show_panel_icon_accent": true,
+        "accent_color": "color-scheme"
+      },
+      "attributes": [
+        "selected"
+      ],
+      "layer0.tint": "var(--accent)"
+    },
+    {
+      "class": "icon_regex",
+      "settings": {
+        "button_background_transparent": true,
+        "show_panel_icon_accent": true,
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "icon_button_control",
+          "attributes": [
+            "selected"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)"
+    },
+    {
+      "class": "icon_case",
+      "settings": {
+        "button_background_transparent": true,
+        "show_panel_icon_accent": true,
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "icon_button_control",
+          "attributes": [
+            "selected"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)"
+    },
+    {
+      "class": "icon_whole_word",
+      "settings": {
+        "button_background_transparent": true,
+        "show_panel_icon_accent": true,
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "icon_button_control",
+          "attributes": [
+            "selected"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)"
+    },
+    {
+      "class": "icon_wrap",
+      "settings": {
+        "button_background_transparent": true,
+        "show_panel_icon_accent": true,
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "icon_button_control",
+          "attributes": [
+            "selected"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)"
+    },
+    {
+      "class": "icon_in_selection",
+      "settings": {
+        "button_background_transparent": true,
+        "show_panel_icon_accent": true,
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "icon_button_control",
+          "attributes": [
+            "selected"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)"
+    },
+    {
+      "class": "icon_highlight",
+      "settings": {
+        "button_background_transparent": true,
+        "show_panel_icon_accent": true,
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "icon_button_control",
+          "attributes": [
+            "selected"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)"
+    },
+    {
+      "class": "icon_preserve_case",
+      "settings": {
+        "button_background_transparent": true,
+        "show_panel_icon_accent": true,
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "icon_button_control",
+          "attributes": [
+            "selected"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)"
+    },
+    {
+      "class": "icon_context",
+      "settings": {
+        "button_background_transparent": true,
+        "show_panel_icon_accent": true,
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "icon_button_control",
+          "attributes": [
+            "selected"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)"
+    },
+    {
+      "class": "icon_use_buffer",
+      "settings": {
+        "button_background_transparent": true,
+        "show_panel_icon_accent": true,
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "icon_button_control",
+          "attributes": [
+            "selected"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)"
+    },
+    {
+      "class": "icon_use_gitignore",
+      "settings": {
+        "button_background_transparent": true,
+        "show_panel_icon_accent": true,
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "icon_button_control",
+          "attributes": [
+            "selected"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)"
+    },
+    {
+      "class": "label_control",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "button_control"
+        }
+      ],
+      "color": "var(--accent)"
+    },
+    {
+      "class": "checkbox_box_control",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "checkbox_control",
+          "attributes": [
+            "checked"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)"
+    },
+    {
+      "class": "checkbox_box_control",
+      "settings": {
+        "accent_color": "color-scheme"
+      },
+      "parents": [
+        {
+          "class": "radio_button_list_control"
+        },
+        {
+          "class": "checkbox_control",
+          "attributes": [
+            "checked"
+          ]
+        }
+      ],
+      "layer0.tint": "var(--accent)"
+    }
+  ]
+}

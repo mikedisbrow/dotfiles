@@ -1,0 +1,44 @@
+// Documentation at https://www.sublimetext.com/docs/color_schemes.html
+{
+	"variables":
+	{
+	},
+	"globals":
+	{
+		"caret": "#FFCC00",
+		"block_caret_underline": "color(var(white2) alpha(0.8))",
+    "block_caret_corner_style": "round",
+    "block_caret_corner_radius": "2",
+    "fold_marker": "var(orange3)",
+    // "minimap_border": "var()",
+    // "accent": "var(blue)",
+    "gutter": "var(black3)",
+    "gutter_foreground": "var(grey)",
+    "gutter_foreground_highlight": "var(yellow3)",
+    // "line_diff_width": "3",
+    // "line_diff_added": "var(git_add)",
+    // "line_diff_modified": "var(git_mod)",
+    // "line_diff_deleted": "var(git_del)",
+    // "selection_foreground": "",
+    "selection_border": "var(grey)",
+    "selection_border_width": "1",
+    "inactive_selection": "color(var(grey) alpha(0.25))",
+    "inactive_selection_border": "color(var(grey) alpha(0.50))",
+    // "inactive_selection_foreground": "",
+    "selection_corner_style": "round",
+    "selection_corner_radius": "2",
+    "highlight": "var(orange3)",
+    "scroll_highlight": "color(var(orange3) alpha(0.80))",
+    "scroll_selected_highlight": "color(var(orange3) alpha(0.80))",
+		"guide": "color(var(white3) alpha(0.05))",
+		"stack_guide": "color(var(white3) alpha(0.05))",
+		"rulers": "color(var(white3) alpha(0.05))",
+		"tags_foreground": "color(var(white3) alpha(0.65))",
+    "shadow": "color(var(black) alpha(0.19))",
+    "shadow_width": "3"
+	},
+	"rules":
+	[
+		
+	]
+}
