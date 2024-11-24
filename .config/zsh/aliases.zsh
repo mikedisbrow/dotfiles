@@ -1,10 +1,9 @@
-#!/bin/bash
-
+#!/usr/bin/env zsh
+# 
 # ~/.aliases
-
+# 
 # https://ss64.com/osx/alias-zsh.html
 # https://ss64.com/osx/alias.html
-
 # -----------------------------------------------------------------------------
 
 # Use neovim for vim if present.
@@ -92,9 +91,6 @@ alias src="source $ZDOTDIR/.zhrc"
 # Fuck - rerun previous prepend sudo
 alias fuck='sudo $(history -p \!\!)'
 
-# trash: https://github.com/sindresorhus/macos-trash
-command -v trash >/dev/null 2>&1 && alias rm="trash"
-
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
 alias please="sudo "
@@ -166,6 +162,9 @@ alias ag="ag \
 
 
 # Git Shit ####################################################################
+
+# cd to git root directory
+alias cdgr='cd "$(git root)"'
 
 alias glone="git clone --depth 1 "
 
@@ -285,6 +284,9 @@ command -v md5sum > /dev/null || alias md5sum="md5"
 # OS X has no `sha1sum`, so use `shasum` as a fallback
 command -v sha1sum > /dev/null || alias sha1sum="shasum"
 
+# trash: https://github.com/sindresorhus/macos-trash
+command -v trash >/dev/null 2>&1 && alias rm="trash"
+
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
 
@@ -314,6 +316,20 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
 alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden files in current dir
 
+
+# Displays detailed weather and forecast.
+if command -v curl > /dev/null; then
+    alias forecast='curl --silent --compressed --max-time 10 --url "https://wttr.in?F"'
+else
+    alias forecast='wget -qO- --compression=auto --timeout=10 "https://wttr.in?F"'
+fi
+
+# Displays current weather.
+if command -v curl > /dev/null; then
+    alias weather='curl --silent --compressed --max-time 10 --url "https://wttr.in/?format=%l:+(%C)+%c++%t+\[%h,+%w\]"'
+else
+    alias weather='wget -qO- --compression=auto --timeout=10 "https://wttr.in/?format=%l:+(%C)+%c++%t+\[%h,+%w\]"'
+fi
 
 # ZSH Shit ####################################################################
 # Use zmv, which is amazing

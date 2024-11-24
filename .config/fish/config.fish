@@ -38,7 +38,6 @@ if status is-interactive
 # User
 
 
-
 # Editor variables
 set -gx PAGER less
 set -gx EDITOR vim

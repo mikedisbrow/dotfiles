@@ -5,6 +5,7 @@
   name = Mike Disbrow
   email = mikedisbrow@gmail.com
 	# signingkey = /Users/miked/.ssh/id_ed25519.pub
+  # signingkey = D2513963C2261687
 
 [gpg]
   format = ssh

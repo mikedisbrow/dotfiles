@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 # .zlogin
 #   zshenv -> zprofile -> zshrc -> zlogin (current) 
 #

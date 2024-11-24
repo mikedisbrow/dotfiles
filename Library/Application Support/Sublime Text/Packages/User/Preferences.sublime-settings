@@ -7,20 +7,20 @@
 	"caret_extra_width": 2,
 	"caret_style": "phase",
 	"drag_text": false,
-	"ignored_packages":
-	[
+	"ignored_packages": [
 		"AutoFileName",
 		"BracketHighlighter",
-		"DocBlockr 2021 (DoxyDoxygen powered)",
 		"Vintage",
 	],
-	"color_scheme": "Monokai.sublime-color-scheme",
-	"font_face": "FiraCode Nerd Font",
-	"font_options": ["no_round", "subpixel_antialias"],
+	"color_scheme": "Packages/Enki Theme/scheme/Enki-Tokyo-Night.tmTheme",
+	"font_face": "FiraCode",
+	"font_options": [
+		"no_round",
+		"subpixel_antialias"
+	],
 	"translate_tabs_to_spaces": true,
 	"draw_indent_guides": true,
-	"indent_guide_options": 
-	[
+	"indent_guide_options": [
 		"draw_active",
 		"solid"
 	],
@@ -35,36 +35,73 @@
 	"highlight_gutter": true,
 	"highlight_line": true,
 	"highlight_line_number": true,
-	"file_exclude_patterns":
-	[
-		".DS_Store",
-		"Desktop.ini",
+	"file_exclude_patterns": [
 		"*.pyc",
+		"*.pyo",
+		"*.exe",
+		"*.dll",
+		"*.obj",
+		"*.o",
+		"*.a",
+		"*.lib",
+		"*.so",
+		"*.dylib",
+		"*.ncb",
+		"*.sdf",
+		"*.suo",
+		"*.pdb",
+		"*.idb",
+		".DS_Store",
+		".directory",
+		"desktop.ini",
+		"*.class",
+		"*.psd",
+		"*.db",
+		"*.sublime-workspace",
 		"._*",
 		"Thumbs.db",
 		".Spotlight-V100",
 		".Trashes"
+	],
+	"folder_exclude_patterns": [
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		".Trash",
+		".Trash-*",
+		".git",
+		".sass-cache",
+		"node_modules"
 	],
 	"font_size": 12,
 	"shell_environment": true,
 	"themed_title_bar": true,
 	"animation_enabled": true,
 	"file_tab_style": "rounded",
+	"enable_tab_scrolling": false,
 	"inactive_sheet_dimming": true,
 	"tree_animation_enabled": true,
 	"bold_folder_labels": true,
 	"remember_layout": false,
 	"draw_minimap_border": true,
-	"rulers": [[80, "solid"]],
+	"rulers": [
+		[
+			80,
+			"solid"
+		]
+	],
 	"trim_automatic_white_space": true,
+	"ensure_newline_at_eof_on_save": true,
 	"scroll_past_end": 0.5,
-	"scroll_context_lines": 2,
+	"scroll_context_lines": 5,
 	"match_brackets": true,
 	"match_brackets_square": true,
 	"match_brackets_angle": true,
 	"match_brackets_braces": true,
 	"match_brackets_content": true,
 	"match_tags": true,
+	"index_files": true,
 	// theme settings
 	"adaptive_theme_style": "digital",
 	"folder_icon_color": "graphite",

@@ -1,4 +1,5 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
+# 
 # /etc/zsh/zshenv: system-wide .zshenv file for zsh(1).
 #
 # This file is sourced on all invocations of the shell.
@@ -16,6 +17,7 @@
 # Note: The shebang #!/bin/zsh is strictly necessary for executable scripts
 # only, but without it, you might not always get correct syntax highlighting
 # when viewing the code.
+# -----------------------------------------------------------------------------
 
 # zmodload zsh/datetime
 # [[ -v ZSH_TIME_STARTUP ]] && t0=$EPOCHREALTIME
@@ -127,12 +129,8 @@ tty_path=$(tty)
 export GPG_TTY=$tty_path
 
 # Browser
-# if [[ "$OSTYPE" == darwin* ]]; then
-#   export BROWSER="${BROWSER:-open}"
-# fi
-
 if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
+  export BROWSER="${BROWSER:-open}"
 fi
 
 # set locale
@@ -143,24 +141,11 @@ export LC_CTYPE="en_US.UTF-8"
 # export LC_ALL="${LC_ALL:-en_US.UTF-8}"
 # export LANG="${LANG:-en_US.UTF-8}"
 
-# Homebrew
-if [[ -e /opt/homebrew/bin/brew ]]; then
-  export BREW_PREFIX=/opt/homebrew
-else
-  export BREW_PREFIX=/usr/local
-fi
-
-# Correctly display UTF-8 with combining characters.
-# This code seems to come from the default OSX OhMyZsh.
-if [ "$TERM_PROGRAM" = "Apple_Terminal" ]; then
-  setopt combiningchars
-fi
-
-if [[ $(uname -s) = Darwin ]]; then
-  # Override insanely low open file limits on macOS.
-  ulimit -n 65536
-  ulimit -u 1064
-fi
+# if [[ $(uname -s) = Darwin ]]; then
+#   # Override insanely low open file limits on macOS.
+#   ulimit -n 65536
+#   ulimit -u 1064
+# fi
 
 ##############################################################
 # PATH.

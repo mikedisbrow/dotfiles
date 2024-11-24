@@ -1,24 +1,26 @@
 {
 	"bootstrapped": true,
-	"in_process_packages":
-	[
-	],
-	"installed_packages":
-	[
+	"in_process_packages": [],
+	"installed_packages": [
 		"A File Icon",
 		"AdvancedNewFile",
+		"Alignment",
+		"ApplySyntax",
 		"AutoFileName",
 		"Babel",
 		"BinaryPlist",
 		"BracketHighlighter",
 		"Catppuccin color schemes",
+		"ChangeQuotes",
 		"Close All without Confirmation",
+		"Coddy Colour Scheme",
 		"ColorHelper",
 		"ColorSchemeUnit",
 		"Debugger",
 		"Dotfiles Syntax Highlighting",
 		"Dracula Color Scheme",
 		"EditorConfig",
+		"Enki Theme",
 		"FileIcons",
 		"fish",
 		"GitHub Theme",
@@ -63,13 +65,16 @@
 		"SublimeLinter-html-tidy",
 		"SublimeLinter-shellcheck",
 		"SublimeLinter-stylelint",
+		"SublimeLinter-xmllint",
 		"Syntax Highlighting Scopes Showroom",
 		"TabsExtra",
 		"Theme - Monokai Pro",
 		"Theme - One",
+		"Theme - Rose Pine",
 		"Theme - Treble",
 		"TOML",
 		"VimL",
+		"Wakame Color Scheme",
 		"Writer Color Scheme",
 	],
 }

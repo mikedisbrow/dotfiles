@@ -1,7 +1,14 @@
 {
-	"extensions":
-	[
-		"prettierrc",
+	"extensions": [
+		".jshintrc",
 		"htmlhintrc",
+		".jscsrc",
+		"geojson",
+		".eslintrc",
+		"prettierrc",
+		".csslintrc",
+		".babelrc",
+		".stylelintrc",
+		".bowerrc",
 	],
 }
